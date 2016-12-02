@@ -21,3 +21,5 @@ echo "Writing export file in $BP_DIR"
 echo "export PATH=\"\$PATH:$BUILD_DIR/.heroku/vendor/mysql/bin\"" > $BP_DIR/export
 echo "export LD_LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
+
+cat $BP_DIR/export
