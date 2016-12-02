@@ -3,6 +3,7 @@ echo "------> Installing Mysql 5.1"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 cd $BUILD_DIR
 # download the minimal mysql tar file
@@ -14,3 +15,13 @@ mkdir -p $BUILD_DIR/.heroku/vendor/mysql
 tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
 # remove the tar file
 rm -f mysql.tar.gz
+
+write_export "$BP_DIR" "$BUILD_DIR"
+
+write_export() {
+  local bp_dir="$1"
+  local build_dir="$2"
+  echo "export PATH=\"$PATH:$build_dir/.heroku/vendor/mysql/bin\"" > $bp_dir/export
+  echo "export LD_LIBRARY_PATH=\"$LIBRARY_PATH:$build_dir/.heroku/vendor/mysql/lib\"" >> $bp_dir/export
+  echo "export LIBRARY_PATH=\"$LIBRARY_PATH:$build_dir/.heroku/vendor/mysql/lib\"" >> $bp_dir/export
+}
