@@ -16,6 +16,8 @@ tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
 # remove the tar file
 rm -f mysql.tar.gz
 
+echo "Writing export file in $BP_DIR"
+
 echo "export PATH=\"\$PATH:$BUILD_DIR/.heroku/vendor/mysql/bin\"" > $BP_DIR/export
 echo "export LD_LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
