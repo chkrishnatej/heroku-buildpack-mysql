@@ -22,6 +22,9 @@ echo "export PATH=\"\$PATH:$BUILD_DIR/.heroku/vendor/mysql/bin\"" > $BP_DIR/expo
 echo "export LD_LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
 echo "export LIBRARY_PATH=\"\$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/mysql/lib\"" >> $BP_DIR/export
 
+echo "Writing PATH to profile.d directory"
+
+mkdir -p $build_dir/.profile.d
 echo "export PATH=\$HOME/.heroku/vendor/mysql/bin:\$PATH" > $BUILD_DIR/.profile.d/mysql.sh
 echo "export LD_LIBRARY_PATH=\$LIBRARY_PATH:\$HOME/.heroku/vendor/mysql/lib" >> $BUILD_DIR/.profile.d/mysql.sh
 echo "export LIBRARY_PATH=\$LIBRARY_PATH:\$HOME/.heroku/vendor/mysql/lib" >> $BUILD_DIR/.profile.d/mysql.sh
