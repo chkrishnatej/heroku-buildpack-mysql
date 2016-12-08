@@ -1,20 +1,13 @@
 #!/usr/bin/env bash
-echo "------> Installing Mysql 5.1"
+echo "------> Installing Mysql 5.6"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
-cd $BUILD_DIR
-# download the minimal mysql tar file
-echo "------> Downloading minimized tarball"
-wget https://raw.githubusercontent.com/gaumire/mysql-binary/master/mysql.tar.gz
-# make a directory to untar (like unzip) the binary
-mkdir -p $BUILD_DIR/.heroku/vendor/mysql
-# untar the binary to a directory inside /app/.heroku
-tar -C $BUILD_DIR/.heroku/vendor/mysql -xvf mysql.tar.gz
-# remove the tar file
-rm -f mysql.tar.gz
+mkdir -p $BUILD_DIR/.heroku/vendor
+curl https://codeload.github.com/j-mcnally/mysql-binaries/tar.gz/master | tar zxv
+cp -R mysql-binaries-master/ $BUILD_DIR/.heroku/vendor/mysql/
 
 echo "Writing export file in $BP_DIR"
 
