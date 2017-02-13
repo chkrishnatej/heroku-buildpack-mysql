@@ -6,7 +6,7 @@ ENV_DIR=$3
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 mkdir -p $BUILD_DIR/.heroku/vendor
-curl https://codeload.github.com/j-mcnally/mysql-binaries/tar.gz/master | tar zxv
+curl https://codeload.github.com/raphjutras/mysql-binaries/tar.gz/master | tar zxv
 cp -R mysql-binaries-master/ $BUILD_DIR/.heroku/vendor/mysql/
 
 echo "Writing export file in $BP_DIR"
