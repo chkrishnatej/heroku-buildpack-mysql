@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-echo "------> Installing Mysql 5.6"
+echo "------> Installing Mysql 8.0.32"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 mkdir -p $BUILD_DIR/.heroku/vendor
-curl https://codeload.github.com/raphjutras/mysql-binaries/tar.gz/master | tar zxv
+curl https://codeload.github.com/chkrishnatej/mysql-binaries/tar.gz/master | tar zxv
 cp -R mysql-binaries-master/ $BUILD_DIR/.heroku/vendor/mysql/
 
 echo "Writing export file in $BP_DIR"
