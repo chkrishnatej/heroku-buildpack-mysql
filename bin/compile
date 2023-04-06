@@ -6,8 +6,10 @@ ENV_DIR=$3
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 mkdir -p $BUILD_DIR/.heroku/vendor
-echo "Current working dirctory is $PWD"
-curl https://codeload.github.com/chkrishnatej/mysql8-binaries/zip/refs/heads/main | tar zxv
+echo "Downloading binaries"
+curl -o mysql8.zip https://codeload.github.com/chkrishnatej/mysql8-binaries/zip/refs/heads/main
+echo "Unzipping the binaries"
+unzip mysql8.zip
 cp -R mysql8-binaries-main/ $BUILD_DIR/.heroku/vendor/mysql/
 
 echo "Writing export file in $BP_DIR"
